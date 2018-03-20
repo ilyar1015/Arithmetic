@@ -1,7 +1,7 @@
 
 public class Topic {
-	int result;
-	String topic;
+	private int result;
+	private String topic;
 	public Topic(String topic,int result){
 		this.topic=topic;
 		this.result=result;

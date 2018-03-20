@@ -7,42 +7,51 @@ public class SetAQuestion {
 	GetRandomDigit grd=null;
 	ArrayList<Topic> al;
 	Topic question;
-	public SetAQuestion(int n,String path){
+	ArithmeticResult ar;
+	public SetAQuestion(int n,String path,String schoolNumber){
 		this.n=n;
 		init();
-		setQuestion(time);
-		new WriteToFile(path, al, n);
+		setQuestion();
+		new WriteToFile(path, al, n,schoolNumber);
 	}
 	
 	
 	public void init(){
 		grd=new GetRandomDigit();
-		time=grd.Time();
 		al=new ArrayList<Topic>();
+		ar=new ArithmeticResult();
 	}
 	
-	public void setQuestion(int time){
+	public void setQuestion(){
 		//出题的数量
+		int[] questionTopic;;
+		int[] questionOprator;
 		for(int i=0;i<n;i++){
-			int t=0;
 			//出题的长度
+			time=grd.Time();
+			questionTopic=new int[time];
+			questionOprator=new int[time-1];
+			for(int t=0;t<time;t++){
+				questionTopic[t]=grd.randomDigit();
+				if(t<time-1){
+					questionOprator[t]=grd.oprator();
+				}
+			}
 			topic="";
-			int a=grd.randomDigit();
-			topic=topic+a;
-			while(t<time){
-//				System.out.println("------");
-				int b=grd.randomDigit();
-				int type=grd.oprator();
-				if(type(type,a,b)!=-1){
-					a=type(type,a,b);
-					topic=topic+getType(type)+b;
-					t++;
-				}else{
-					continue;
+			for(int t=0;t<time;t++){
+				topic=topic+questionTopic[t];
+				if(t<time-1){
+					topic=topic+getType(questionOprator[t]);
 				}
 			}
 			topic=topic+"=";
-			question=new Topic(topic, a);
+			System.out.println(topic);
+			double a=ar.Result(topic);
+			if(a<0||a%1!=0){
+				i--;
+				continue;
+			}
+			question=new Topic(topic,(int)a);
 			al.add(question);
 		}
 	}

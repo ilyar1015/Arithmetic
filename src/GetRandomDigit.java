@@ -1,17 +1,25 @@
+import java.util.Random;
 
 public class GetRandomDigit {
-	//0~4随机数
+	private Random random;
+	public GetRandomDigit(){
+		random=new Random();
+	}
+	
+	//1~4随机数
 	int oprator(){
-		return (int)(Math.random()*5+1-0.0001);
+		return random.nextInt(4)+1;
 	}
 	
 	//3~5的随机数
 	int Time(){
-		return (int)(Math.random()*2+3.5);
+		return random.nextInt(3)+3;
 	}
 	
 	//0~100 随机数
 	int randomDigit(){
-		return (int)(Math.random()*100);
+		return random.nextInt(100);
 	}
+	
+	//
 }
