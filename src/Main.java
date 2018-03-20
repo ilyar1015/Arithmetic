@@ -23,6 +23,7 @@ public class Main {
 				try {
 					n=Integer.parseInt(args[0]);
 					args=null;
+					sc.next();
 				} catch (Exception e) {
 					System.out.println("请不要输入其他非法字串");
 					continue;
