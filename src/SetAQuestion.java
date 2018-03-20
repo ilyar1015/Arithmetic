@@ -56,7 +56,6 @@ public class SetAQuestion {
 				}
 			}
 			topic=topic+"=";
-			System.out.println(topic);
 			double a=ar.Result(topic);
 			if(a<0||a%1!=0){
 				i--;
