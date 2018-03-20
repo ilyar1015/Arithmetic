@@ -38,8 +38,19 @@ public class SetAQuestion {
 				}
 			}
 			topic="";
+			int bracketsIndex=-1;
+			if(PQ()){
+				bracketsIndex=grd.BracketsIndex(time);
+			}
 			for(int t=0;t<time;t++){
+				if(bracketsIndex==t){
+					topic=topic+"(";
+				}
+				
 				topic=topic+questionTopic[t];
+				if(bracketsIndex+1==t && bracketsIndex!=-1){
+					topic=topic+")";
+				}
 				if(t<time-1){
 					topic=topic+getType(questionOprator[t]);
 				}
@@ -68,24 +79,12 @@ public class SetAQuestion {
 		}
 	}
 	
-	//解析运算符，并给出答案
-	int type(int type,int a,int b){
-		if(type==1){
-			return a+b;
-		}else if(type==2){
-			if(judge(type,a,b)){
-				return a-b;
-			}else{
-				return -1;
-			}
-		}else if(type==3){
-			return a*b;
+	boolean PQ(){
+		int PQ=grd.probabilityQuestion();
+		if(PQ>=90 && PQ<=120){
+			return true;
 		}else{
-			if(judge(type,a,b)){
-				return a/b;
-			}else{
-				return -1;
-			}
+			return false;
 		}
 	}
 	

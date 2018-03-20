@@ -21,5 +21,13 @@ public class GetRandomDigit {
 		return random.nextInt(100);
 	}
 	
-	//
+	//产生随机数，让其20概率
+	int probabilityQuestion(){
+		return random.nextInt(200);
+	}
+	
+	//产生括号的随机数
+	int BracketsIndex(int time){
+		return random.nextInt(time-2);
+	}
 }
