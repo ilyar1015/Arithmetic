@@ -79,23 +79,18 @@ public class ArithmeticResult {
         double res = 0f;  
         char s = stmp.charAt(0);  
         switch (s) {  
-          case '+': {  
+          case '+':
             res = a + b;  
             break;  
-          }  
-          case '-': {  
+          case '-':  
             res = a - b;  
-  
             break;  
-          }  
-          case '¡Á': {  
+          case '¡Á':
             res = a * b;  
             break;  
-          }  
-          case '¡Â': {  
+          case '¡Â':
             res = a / b;  
             break;  
-          }  
         }  
         return res;
     }    
